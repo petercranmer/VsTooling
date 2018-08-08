@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>lsentity</Title>
+			<Shortcut>lsentity</Shortcut>
+			<Description>Code snippet for a Lightspeed entity reference.</Description>
+			<Author>Paperstone Limited</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>type</ID>
+					<ToolTip>Property type</ToolTip>
+					<Default>string</Default>
+				</Literal>
+				<Literal>
+					<ID>property</ID>
+					<ToolTip>Property name</ToolTip>
+					<Default>Property</Default>
+				</Literal>
+				<Literal>
+					<ID>field</ID>
+					<ToolTip>The property persisted by Lightspeed.</ToolTip>
+					<Default>field</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp"><![CDATA[private readonly EntityHolder<$type$> $field$ = new EntityHolder<$type$>();
+	private int $field$Id;
+
+	public int $property$Id
+	{
+		get { return this.$field$Id; }
+		set { this.Set(ref this.$field$Id, value); }
+	}
+
+	public $type$ $property$
+	{
+		get { return this.Get(this.$field$); }
+		set { this.Set(this.$field$, value); }
+	}
+	$end$]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
